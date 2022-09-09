@@ -21,6 +21,7 @@ createCommand({
       description: getString('cmd_steamgame_arg_steamid64'),
     },
   ],
+  restrictChannel: true,
   run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     steamGameCommand(message, input);
   },

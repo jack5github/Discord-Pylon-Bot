@@ -11,6 +11,7 @@ export const dictionary: any = {
   unknown_cmd:
     'No command with the name `%1` could be found. Try using the `help` command.',
   no_permission: 'You do not have permission to use this command.',
+  incorrect_channel: 'That command cannot be used in this channel.',
   unknown_user:
     'No user could be found with that info. Try copying an ID, or simply leaving the ID blank to point to yourself.',
   minutes_name: 'minutes',
@@ -58,6 +59,8 @@ export const dictionary: any = {
    */
   help_cmd_aliases: '*Also works as:*',
   help_cmd_args: '*Arguments:*',
+  help_cmd_restrict_channel:
+    "⚠️ *This command can only be run in the bot's dedicated channels.*",
   help_no_cmds_in_category:
     'No commands could be found in that category. Please contact a server manager.',
   cmd_eightball: 'Get your fortune told from The Magic 8-Ball.',

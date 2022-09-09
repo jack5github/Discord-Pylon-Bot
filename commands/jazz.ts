@@ -11,7 +11,7 @@ import {
   getString,
 } from '../global';
 import {
-  JAZZ_CHANNEL,
+  BOT_CHANNEL,
   JAZZ_OBJECTS_MINIMUM,
   JAZZ_OBJECTS_MAXIMUM,
   JAZZ_OUTSIDE_CHANCE,
@@ -45,6 +45,7 @@ createCommand({
     },
     { name: 'respawn', description: getString('cmd_jazz_arg_respawn') },
   ],
+  restrictChannel: true,
   run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     jazzCommand(message, input);
   },
@@ -341,7 +342,7 @@ export async function showJazzObjects(
         message.reply(embed);
       } else {
         // This command has been scheduled, announce to everybody.
-        discord.getTextChannel(JAZZ_CHANNEL).then((channel) => {
+        discord.getTextChannel(BOT_CHANNEL).then((channel) => {
           if (channel != null) {
             channel.sendMessage(embed);
           }

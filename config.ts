@@ -71,8 +71,12 @@ export const COMMAND_CATEGORIES: any[] = [
 ];
 export const COMMAND_DEFAULT_CATEGORY = 'default';
 
+/* Bot channel - The channel in which most of the bot's commands should be relegated to.
+ * Attempting to use a restricted command outside this or the developer channel will warn the user.
+ */
+export const BOT_CHANNEL = '';
+
 // Jazztronauts command settings.
-export const JAZZ_CHANNEL = ''; // The channel where the bot posts about new object spawns.
 export const JAZZ_OBJECTS_MINIMUM = 20; // The minimum number of objects that can spawn at once.
 export const JAZZ_OBJECTS_MAXIMUM = 36; // The maximum number of objects that can spawn at once.
 export const JAZZ_OUTSIDE_CHANCE = 0.5; // How often outside objects will appear out of 1.

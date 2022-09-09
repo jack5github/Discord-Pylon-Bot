@@ -21,6 +21,7 @@ createCommand({
       description: getString('cmd_rps_arg_hand'),
     },
   ],
+  restrictChannel: true,
   run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     rockPaperScissorsCommand(message, input);
   },

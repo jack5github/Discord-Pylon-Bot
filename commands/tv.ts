@@ -35,6 +35,7 @@ createCommand({
       description: getString('cmd_tv_arg_remove'),
     },
   ],
+  restrictChannel: true,
   run: function (
     message: discord.GuildMemberMessage,
     input: string[] | null

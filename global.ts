@@ -29,6 +29,7 @@ const COMMAND_INFO: any[] = [];
  * The following parameters are used only for populating the help menu:
  *
  * showInHelp - Whether to show the command in the help menus (defaults to true).
+ * restrictChannel - Whether to prevent the command from being used in most channels (defaults to false).
  * devOnly - Whether to only show the command in the help menus if in a developer channel (defaults to false).
  * category - Specifies what category of commands it belongs to.
  * description - The description of the command as seen on its category page.
@@ -65,17 +66,28 @@ export async function createCommand(items: any) {
         if (allPermitted) {
           let timedOut = await isUserTimedOut(message);
           if (!timedOut) {
-            if (message.channelId != CFG.DEV_CHANNEL) {
-              // Run the command normally outside of the developer channel.
-              if (items.run != null) {
+            // Run the command if it allows itself to be run in the current channel.
+            if (
+              items.restrictChannel == null ||
+              !items.restrictChannel ||
+              message.channelId == CFG.BOT_CHANNEL ||
+              message.channelId == CFG.DEV_CHANNEL
+            ) {
+              if (message.channelId != CFG.DEV_CHANNEL) {
+                // Run the command normally outside of the developer channel.
+                if (items.run != null) {
+                  await items.run(message, input);
+                }
+              } else if (items.runDev != null) {
+                // Run the command in developer mode since a developer version exists.
+                await items.runDev(message, input);
+              } else if (items.run != null) {
+                // Run the command normally despite being in the developer channel.
                 await items.run(message, input);
               }
-            } else if (items.runDev != null) {
-              // Run the command in developer mode since a developer version exists.
-              await items.runDev(message, input);
-            } else if (items.run != null) {
-              // Run the command normally despite being in the developer channel.
-              await items.run(message, input);
+            } else {
+              // The current channel is not acceptable for this command, reply with an error.
+              createErrorEmbed(message, getString('incorrect_channel'));
             }
           }
         } else {
@@ -87,6 +99,9 @@ export async function createCommand(items: any) {
     // Create the help topic for the command.
     if (items.showInHelp == null) {
       items.showInHelp = true;
+    }
+    if (items.restrictChannel == null) {
+      items.restrictChannel = false;
     }
     if (items.devOnly == null) {
       items.devOnly = false;
@@ -102,6 +117,7 @@ export async function createCommand(items: any) {
         aliases: items.aliases,
         longDescription: items.longDescription,
         args: items.args,
+        restrictChannel: items.restrictChannel,
         devOnly: items.devOnly,
       });
     }

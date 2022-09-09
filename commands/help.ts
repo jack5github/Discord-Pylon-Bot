@@ -178,6 +178,9 @@ async function helpCommand(
               }
             }
           }
+          if (command.restrictChannel) {
+            description += '\n' + getString('help_cmd_restrict_channel');
+          }
           embed.setDescription(description);
           await message.reply(embed);
         } else {
