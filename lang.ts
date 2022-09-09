@@ -69,6 +69,11 @@ export const dictionary: any = {
   cmd_dadjoke: "There's nothing quite like a good dad joke!",
   cmd_dadjoke_long:
     "If you need a chuckle, use this command! It will fetch you a random dad joke that's sure to put you in stitches!",
+  cmd_emojispeak: 'Transforms your text into regional indicators.',
+  cmd_emojispeak_long:
+    'Enter a message into this command and it will be converted into large letters and numbers (regional indicators)!',
+  cmd_emojispeak_arg_text:
+    'The text you want to convert. Only letters, numbers, spaces and new lines are converted.',
   cmd_flip: 'Flip a coin to see how lucky you are.',
   cmd_flip_long:
     "Can't make a decision or just want to see how lucky you are? This simple command will flip a coin for you.",
@@ -154,6 +159,12 @@ export const dictionary: any = {
   ],
   dadjoke_api_error:
     'A dad joke could not be retrieved, the joke server may be down. Please try again later.',
+  emojispeak_empty:
+    'Type a message after the command that you want to convert into regional indicators.',
+  emojispeak_cannot_convert:
+    'Nothing in your message could be converted. Use only letters, numbers and spaces.',
+  emojispeak_too_long:
+    'The message you want to convert is too long. Up to %1 characters are allowed.',
   flip_heads: "<:TRexExcited:942401501316395019> ...it's Heads!",
   flip_tails: "<:cheesewings:549758544447275022> ...it's Tails!",
   hug_no_or_self_reply:
