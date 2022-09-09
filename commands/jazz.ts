@@ -11,15 +11,16 @@ import {
   getString,
 } from '../global';
 import {
-  ECONOMY_JAZZ_OBJECTS_MINIMUM,
-  ECONOMY_JAZZ_OBJECTS_MAXIMUM,
-  ECONOMY_JAZZ_OUTSIDE_CHANCE,
-  ECONOMY_JAZZ_REWARD_SMALL_MINIMUM,
-  ECONOMY_JAZZ_REWARD_SMALL_MAXIMUM,
-  ECONOMY_JAZZ_REWARD_LARGE_MINIMUM,
-  ECONOMY_JAZZ_REWARD_LARGE_MAXIMUM,
-  ECONOMY_JAZZ_REWARD_WORLD_MULTIPLIER,
-  ECONOMY_JAZZ_REWARD_BONUS_MULTIPLIER,
+  JAZZ_CHANNEL,
+  JAZZ_OBJECTS_MINIMUM,
+  JAZZ_OBJECTS_MAXIMUM,
+  JAZZ_OUTSIDE_CHANCE,
+  JAZZ_REWARD_SMALL_MINIMUM,
+  JAZZ_REWARD_SMALL_MAXIMUM,
+  JAZZ_REWARD_LARGE_MINIMUM,
+  JAZZ_REWARD_LARGE_MAXIMUM,
+  JAZZ_REWARD_WORLD_MULTIPLIER,
+  JAZZ_REWARD_BONUS_MULTIPLIER,
 } from '../config';
 
 createCommand({
@@ -267,16 +268,15 @@ async function jazzCommand(
 export async function spawnJazzObjects() {
   let objs: string[] = [];
   let objCount = Math.floor(
-    Math.random() *
-      (ECONOMY_JAZZ_OBJECTS_MAXIMUM - ECONOMY_JAZZ_OBJECTS_MINIMUM) +
-      ECONOMY_JAZZ_OBJECTS_MINIMUM
+    Math.random() * (JAZZ_OBJECTS_MAXIMUM - JAZZ_OBJECTS_MINIMUM) +
+      JAZZ_OBJECTS_MINIMUM
   );
   let outside = Math.floor(Math.random());
   objects.forEach((obj) => {
     // Spawn all objects that must be spawned at minimum.
     if (obj.min > 0) {
       // Do not attempt to spawn the object if the map is inside and it is an outside object.
-      if (outside < ECONOMY_JAZZ_OUTSIDE_CHANCE || !obj.out) {
+      if (outside < JAZZ_OUTSIDE_CHANCE || !obj.out) {
         for (let i = 0; i < obj.min; i++) {
           if (objCount > 0) {
             objs.splice(Math.floor(Math.random() * objs.length), 0, obj.name);
@@ -341,7 +341,7 @@ export async function showJazzObjects(
         message.reply(embed);
       } else {
         // This command has been scheduled, announce to everybody.
-        discord.getTextChannel('1012589938224668753').then((channel) => {
+        discord.getTextChannel(JAZZ_CHANNEL).then((channel) => {
           if (channel != null) {
             channel.sendMessage(embed);
           }
@@ -461,18 +461,18 @@ async function pillageJazzObject(
             }
             // Convert this scale into the minimum and maximum random values.
             let min =
-              ECONOMY_JAZZ_REWARD_LARGE_MINIMUM * scale +
-              ECONOMY_JAZZ_REWARD_SMALL_MINIMUM * (1 - scale);
+              JAZZ_REWARD_LARGE_MINIMUM * scale +
+              JAZZ_REWARD_SMALL_MINIMUM * (1 - scale);
             let max =
-              ECONOMY_JAZZ_REWARD_LARGE_MAXIMUM * scale +
-              ECONOMY_JAZZ_REWARD_SMALL_MAXIMUM * (1 - scale);
+              JAZZ_REWARD_LARGE_MAXIMUM * scale +
+              JAZZ_REWARD_SMALL_MAXIMUM * (1 - scale);
             // Calculate the reward and apply bonuses or penalties if necessary.
             let reward = Math.random() * (max - min) + min;
             if (!object.prop) {
-              reward = reward * ECONOMY_JAZZ_REWARD_WORLD_MULTIPLIER;
+              reward = reward * JAZZ_REWARD_WORLD_MULTIPLIER;
             }
             if (object.bonus) {
-              reward = reward * ECONOMY_JAZZ_REWARD_BONUS_MULTIPLIER;
+              reward = reward * JAZZ_REWARD_BONUS_MULTIPLIER;
             }
             // Ensure the reward is a whole number above 0.
             reward = Math.round(reward);

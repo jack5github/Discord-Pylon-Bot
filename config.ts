@@ -71,16 +71,17 @@ export const COMMAND_CATEGORIES: any[] = [
 ];
 export const COMMAND_DEFAULT_CATEGORY = 'default';
 
-// Jazztronauts command settings
-export const ECONOMY_JAZZ_OBJECTS_MINIMUM = 20;
-export const ECONOMY_JAZZ_OBJECTS_MAXIMUM = 36;
-export const ECONOMY_JAZZ_OUTSIDE_CHANCE = 0.5;
-export const ECONOMY_JAZZ_REWARD_SMALL_MINIMUM = 2;
-export const ECONOMY_JAZZ_REWARD_SMALL_MAXIMUM = 4;
-export const ECONOMY_JAZZ_REWARD_LARGE_MINIMUM = 16;
-export const ECONOMY_JAZZ_REWARD_LARGE_MAXIMUM = 20;
-export const ECONOMY_JAZZ_REWARD_WORLD_MULTIPLIER = 0.5;
-export const ECONOMY_JAZZ_REWARD_BONUS_MULTIPLIER = 2;
+// Jazztronauts command settings.
+export const JAZZ_CHANNEL = ''; // The channel where the bot posts about new object spawns.
+export const JAZZ_OBJECTS_MINIMUM = 20; // The minimum number of objects that can spawn at once.
+export const JAZZ_OBJECTS_MAXIMUM = 36; // The maximum number of objects that can spawn at once.
+export const JAZZ_OUTSIDE_CHANCE = 0.5; // How often outside objects will appear out of 1.
+export const JAZZ_REWARD_SMALL_MINIMUM = 2; // The base minimum number of points for small objects.
+export const JAZZ_REWARD_SMALL_MAXIMUM = 4; // The base maximum number of points for small objects.
+export const JAZZ_REWARD_LARGE_MINIMUM = 16; // The base minimum number of points for large objects.
+export const JAZZ_REWARD_LARGE_MAXIMUM = 20; // The base maximum number of points for large objects.
+export const JAZZ_REWARD_WORLD_MULTIPLIER = 0.5; // How much to multiply the points of an object if it is not a prop.
+export const JAZZ_REWARD_BONUS_MULTIPLIER = 2; // How much to multiply the points of an object if it is a bonus.
 
 // Steam Game default steamid64 - What steamid64 to use when none is provided. Get one from https://steamid.io
 export const STEAMGAME_DEFAULT_STEAMID64 = '';

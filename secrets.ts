@@ -4,8 +4,8 @@
 
 // YouTube API key - The means for the bot to get information about YouTube videos.
 // Follow these instructions to create one: https://developers.google.com/youtube/v3/getting-started
-export const YOUTUBE_API_KEY = ''; // WILL BE REQUIRED TO READ INFORMATION ABOUT YOUTUBE VIDEOS
+export const YOUTUBE_API_KEY = '';
 
 // Steam API key - The means for the bot to get information about Steam games.
 // Follow these instructions to create one: https://steamcommunity.com/dev
-export const STEAM_API_KEY = ''; // WILL BE REQUIRED TO SHOW USER STEAM LIBRARIES
+export const STEAM_API_KEY = '';

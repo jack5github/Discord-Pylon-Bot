@@ -91,23 +91,23 @@ async function tvShowRandomVideo(
   database.get<string[]>('videoIds').then((videos) => {
     if (videos != null) {
       if (index == null) {
-        // Get a random video from the list
+        // Get a random video from the list.
         message.reply(
           'https://youtube.com/watch?v=' +
             videos[Math.floor(Math.random() * videos.length)]
         );
       } else if (index >= 1 && index <= videos.length) {
-        // Get the video from the index the user specified
+        // Get the video from the index the user specified.
         message.reply('https://youtube.com/watch?v=' + videos[index - 1]);
       } else {
-        // The user specified an unusable index, show an error
+        // The user specified an unusable index, show an error.
         createErrorEmbed(
           message,
           getString('tv_incorrect_id')
         );
       }
     } else {
-      // Rare edge case: There are no videos in the list
+      // Rare edge case: There are no videos in the list.
       createErrorEmbed(
         message,
         getString('tv_no_videos')
@@ -142,13 +142,13 @@ async function tvShowVideoList(
   message: discord.GuildMemberMessage,
   input: string | string[] | null
 ) {
-  if (YOUTUBE_API_KEY != null && YOUTUBE_API_KEY != '') {
+  if (YOUTUBE_API_KEY != null && YOUTUBE_API_KEY.length >= 1) {
     if (input == null || !isNaN(parseInt(input[0]))) {
-      // Get the video information
+      // Get the video information.
       let database = new pylon.KVNamespace('tv');
       database.get<string[]>('videoIds').then(async (videos: any) => {
         if (videos != null && videos.length != 0) {
-          // Determine the number of pages and what page to display
+          // Determine the number of pages and what page to display.
           let currentPage = 1;
           if (input != null) {
             currentPage = parseInt(input[0]);
@@ -170,7 +170,7 @@ async function tvShowVideoList(
               query += videos[index + i];
             }
             let url =
-              'https://googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=' +
+              'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=' +
               query +
               '&key=' +
               YOUTUBE_API_KEY;

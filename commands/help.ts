@@ -26,10 +26,7 @@ createCommand({
       description: getString('cmd_help_arg_topic'),
     },
   ],
-  runDev: function (
-    message: discord.GuildMemberMessage,
-    input: string[] | null
-  ) {
+  run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     helpCommand(message, input);
   },
 });

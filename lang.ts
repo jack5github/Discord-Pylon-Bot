@@ -126,7 +126,7 @@ export const dictionary: any = {
   /*
    * Command-specific strings.
    */
-  eightball_message: '🎱 %1',
+  eightball_message: '🎱 The Magic 8-Ball says: "%1"',
   eightball_response: [
     'It is certain.',
     'It is decidedly so.',
