@@ -66,6 +66,11 @@ export const dictionary: any = {
   cmd_eightball: 'Get your fortune told from The Magic 8-Ball.',
   cmd_eightball_long:
     "Got a question that you want a second opinion on? Get your or someone else's fortune told from The Magic 8-Ball.",
+  cmd_avatar: "Links your or another user's high-quality avatar.",
+  cmd_avatar_long:
+    "No need to search how to grab a Discord user's avatar, this command will do it for you.",
+  cmd_avatar_arg_user:
+    'See the avatar of another user. Copy their ID by enabling Developer Mode in your advanced Discord settings.',
   cmd_dadjoke: "There's nothing quite like a good dad joke!",
   cmd_dadjoke_long:
     "If you need a chuckle, use this command! It will fetch you a random dad joke that's sure to put you in stitches!",

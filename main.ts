@@ -5,6 +5,7 @@
 import './lang';
 
 import './commands/8ball';
+import './commands/avatar';
 import './commands/dadjoke';
 import './commands/emojispeak';
 import './commands/flip';
