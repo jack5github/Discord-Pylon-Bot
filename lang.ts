@@ -71,6 +71,11 @@ export const dictionary: any = {
     "No need to search how to grab a Discord user's avatar, this command will do it for you.",
   cmd_avatar_arg_user:
     'See the avatar of another user. Copy their ID by enabling Developer Mode in your advanced Discord settings.',
+  cmd_cat: 'Everybody has a unique cat, find out what yours is!',
+  cmd_cat_long:
+    'Ever wondered what you might look like as a cat? This command will show you! Everybody has a unique cat, find out what yours is!',
+  cmd_cat_arg_user:
+    'See the cat of another user. Copy their ID by enabling Developer Mode in your advanced Discord settings.',
   cmd_dadjoke: "There's nothing quite like a good dad joke!",
   cmd_dadjoke_long:
     "If you need a chuckle, use this command! It will fetch you a random dad joke that's sure to put you in stitches!",
