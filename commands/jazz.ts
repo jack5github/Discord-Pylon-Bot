@@ -537,9 +537,9 @@ async function jazzIsUserTimedOut(message: discord.GuildMemberMessage) {
       .then((users) => {
         let time = new Date().getTime();
         if (users != null) {
-          let userSearch = (element: any) => (element.id = message.author.id);
+          let userSearch = (element: any) => element.id == message.author.id;
           let index = users.findIndex(userSearch);
-          if (index != null) {
+          if (index != -1) {
             let cooldownTime = users[index].date + JAZZ_PILLAGE_COOLDOWN;
             if (cooldownTime < time) {
               // Rare edge case: User is on the list but is not spamming, do not edit the list.
