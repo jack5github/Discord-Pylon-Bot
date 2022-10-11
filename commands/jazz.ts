@@ -319,14 +319,14 @@ export async function showJazzObjects(
   database.get<string[]>('spawnedObjects').then((objs) => {
     if (objs != null && objs.length != 0) {
       let embed = createEmbed();
-      embed.setImage({
-        url: 'https://static.tvtropes.org/pmwiki/pub/images/jazztronauts_logo.png',
-      });
       let description = '';
       if (!respawned) {
         // Respond to the command activated by a user.
         embed.setTitle(getString('jazz_title'));
         description = getString('jazz_desc') + '\n```fix\n';
+        embed.setImage({
+          url: 'https://static.tvtropes.org/pmwiki/pub/images/jazztronauts_logo.png',
+        });
       } else {
         // This command has been scheduled, announce to everybody.
         embed.setTitle(getString('jazz_title_daily'));
