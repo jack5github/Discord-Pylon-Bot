@@ -11,7 +11,7 @@ import {
 
 createCommand({
   name: 'rps',
-  category: 'fun',
+  category: 'gambling',
   aliases: ['rockpaperscissors', 'taunt'],
   description: getString('cmd_rps'),
   longDescription: getString('cmd_rps_long'),

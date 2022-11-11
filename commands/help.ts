@@ -150,7 +150,7 @@ async function helpCommand(
           // A matching command was found, display all information about it.
           embed.setTitle('`' + command.name + '`');
           let description = '';
-          if (command.aliases != null) {
+          if (command.aliases != null && command.aliases.length >= 1) {
             description += getString('help_cmd_aliases') + ' ';
             for (let i = 0; i < command.aliases.length; i++) {
               description += '`' + command.aliases[i] + '`';

@@ -46,6 +46,12 @@ export const COMMAND_CATEGORIES: any[] = [
     longDescription: getString('category_fun_desc_long'),
   },
   {
+    name: 'gambling',
+    title: getString('category_gambling_title'),
+    description: getString('category_gambling_desc'),
+    longDescription: getString('category_gambling_desc_long'),
+  },
+  {
     name: 'links',
     title: getString('category_links_title'),
     description: getString('category_links_desc'),

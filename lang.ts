@@ -41,6 +41,10 @@ export const dictionary: any = {
   category_fun_desc: 'Little distractions that are just for fun!',
   category_fun_desc_long:
     'Looking for a great time with just yourself and the bot? Look no further than these distractions, which are just for fun!',
+  category_gambling_title: 'Fake Gambling',
+  category_gambling_desc: 'A completely safe environment to try your luck.',
+  category_gambling_desc_long:
+    'These gambling commands are not tied to any currency system and are completely safe to use. See how lucky you are!',
   category_links_title: 'Quick Links',
   category_links_desc: 'Easy access to important webpages.',
   category_links_desc_long:
@@ -71,6 +75,10 @@ export const dictionary: any = {
     "No need to search how to grab a Discord user's avatar, this command will do it for you.",
   cmd_avatar_arg_user:
     'See the avatar of another user. Copy their ID by enabling Developer Mode in your advanced Discord settings.',
+  cmd_blackjack: 'Draw 2 to 4 cards and try to get a total of 21 or less.',
+  cmd_blackjack_long:
+    'Test your luck with this simple Blackjack game. Draw 2 to 4 cards and try to get a total of 21 or less.',
+  cmd_blackjack_arg_cards: 'The number of cards you want to draw.',
   cmd_cat: 'Everybody has a unique cat, find out what yours is!',
   cmd_cat_long:
     'Ever wondered what you might look like as a cat? This command will show you! Everybody has a unique cat, find out what yours is!',
@@ -167,6 +175,18 @@ export const dictionary: any = {
     'Outlook not so good.',
     'Very doubtful.',
   ],
+  blackjack_no_cards:
+    'Specify the number of cards you want to draw between 2 and 4.',
+  blackjack_incorrect_cards: 'You can only draw between 2 and 4 cards.',
+  blackjack_win: 'You survived!',
+  blackjack_bust: 'You went bust...',
+  blackjack_cards: 'The cards dealt were %1.',
+  blackjack_and: 'and',
+  blackjack_card_ace: 'Ace',
+  blackjack_card_jack: 'Jack',
+  blackjack_card_queen: 'Queen',
+  blackjack_card_king: 'King',
+  blackjack_total: 'Total reached: %1',
   dadjoke_api_error:
     'A dad joke could not be retrieved, the joke server may be down. Please try again later.',
   emojispeak_empty:

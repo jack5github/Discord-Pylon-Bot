@@ -12,7 +12,7 @@ import {
 
 createCommand({
   name: 'roll',
-  category: 'fun',
+  category: 'gambling',
   aliases: ['d', 'dice', 'die', 'r'],
   description: getString('cmd_roll'),
   longDescription: getString('cmd_roll_long'),
