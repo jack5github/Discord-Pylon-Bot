@@ -183,7 +183,9 @@ async function tvShowVideoList(
                 let embed = createEmbed();
                 embed.setTitle(getString('tv_list_title'));
                 embed.setFooter({
-                  text: getString('page_numbers').replaceAll('%1', currentPage).replaceAll('%2', pages);
+                  text: getString('page_numbers')
+                    .replaceAll('%1', currentPage)
+                    .replaceAll('%2', pages),
                 });
                 let description = '';
                 for (let i = 0; i < maximum; i++) {
@@ -195,7 +197,7 @@ async function tvShowVideoList(
                     videosInfo.items[i].snippet.channelTitle +
                     ' - ' +
                     videosInfo.items[i].snippet.title;
-                  if (i < videosPerPage - 1) {
+                  if (i < maximum - 1) {
                     description = description + '\n';
                   }
                 }
@@ -206,11 +208,14 @@ async function tvShowVideoList(
                 createErrorEmbed(
                   message,
                   getString('tv_list_error')
+                    .replaceAll('%1', index + 1)
+                    .replaceAll('%2', index + maximum)
                 );
               });
           } else {
             createErrorEmbed(
-              message, getString('tv_list_incorrect_page').replaceAll('%1', pages)
+              message,
+              getString('tv_list_incorrect_page').replaceAll('%1', pages)
             );
           }
         } else {
@@ -218,16 +223,10 @@ async function tvShowVideoList(
         }
       });
     } else {
-      createErrorEmbed(
-        message,
-        getString('tv_list_incorrect_page')
-      );
+      createErrorEmbed(message, getString('tv_list_incorrect_page'));
     }
   } else {
-    createErrorEmbed(
-      message,
-      getString('tv_list_api_unset')
-    );
+    createErrorEmbed(message, getString('tv_list_api_unset'));
   }
 }
 

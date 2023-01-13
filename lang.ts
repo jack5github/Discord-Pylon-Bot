@@ -296,7 +296,7 @@ export const dictionary: any = {
   tv_list_incorrect_page:
     'There are only %1 pages. Please enter a valid page number, or no number to view the first page.',
   tv_list_error:
-    'An error occurred. Either the video IDs are malformatted or the API has been exhausted. Try again later.',
+    'An error occurred. Either the videos are private or non-existant, or the API is down. Try checking the affected videos %1-%2.',
   tv_list_api_unset:
     'A YouTube API key is required for this command to work. Please contact a server manager.',
   tv_add: 'The list has been updated to include %1 more %2.',
