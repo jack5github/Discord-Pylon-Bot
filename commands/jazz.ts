@@ -136,6 +136,7 @@ let objects: JazzObject[] = [
   new JazzObject({ name: 'couch', size: 7, chance: 2 }),
   new JazzObject({ name: 'television', size: 3, chance: 1 }),
   new JazzObject({ name: 'monitor', size: 4, chance: 1 }),
+  new JazzObject({ name: 'sound_system', size: 3, chance: 1 }),
   new JazzObject({ name: 'computer', size: 3, chance: 1 }),
   new JazzObject({ name: 'laptop', size: 3, chance: 1 }),
   new JazzObject({ name: 'bed', size: 7, chance: 4 }),
@@ -202,6 +203,9 @@ let objects: JazzObject[] = [
   new JazzObject({ name: 'tree', out: true, size: 8, chance: 2 }),
   new JazzObject({ name: 'garden_gnome', size: 2, chance: 1, bonus: true }),
   new JazzObject({ name: 'statue', size: 5, chance: 1 }),
+  new JazzObject({ name: 'sculpture', size: 5, chance: 1 }),
+  new JazzObject({ name: 'photo', size: 2, chance: 1 }),
+  new JazzObject({ name: 'painting', size: 3, chance: 1 }),
   new JazzObject({ name: 'pillar', size: 5, chance: 4 }),
   new JazzObject({ name: 'tombstone', out: true, size: 3, chance: 1 }),
   new JazzObject({ name: 'utility_pole', out: true, size: 7, chance: 2 }),
@@ -212,6 +216,7 @@ let objects: JazzObject[] = [
   new JazzObject({ name: 'jeep', out: true, size: 7, chance: 1 }),
   new JazzObject({ name: 'truck', out: true, size: 8, chance: 1 }),
   new JazzObject({ name: 'boat', out: true, size: 8, chance: 1 }),
+  new JazzObject({ name: 'crane', out: true, size: 8, chance: 1 }),
   new JazzObject({
     name: 'shipping_container',
     out: true,
@@ -221,6 +226,7 @@ let objects: JazzObject[] = [
   new JazzObject({ name: 'suit', size: 4, chance: 1 }),
   new JazzObject({ name: 'kleiner', size: 4, chance: 1, bonus: true }),
   new JazzObject({ name: 'dinosaur_plush', size: 2, chance: 1, bonus: true }),
+  new JazzObject({ name: 'band_member', size: 4, chance: 1, bonus: true }),
 ];
 
 let maxSize = 1;
