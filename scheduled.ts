@@ -4,12 +4,16 @@
  */
 
 import { spawnJazzObjects, showJazzObjects } from './commands/jazz';
+import { tvShowRandomVideo } from './commands/tv';
 
 // Run every day at 00:00 UTC (10:00 AEST)
-pylon.tasks.cron('spawn_jazz_objects', '0 0 0 * * * *', async () => {
+pylon.tasks.cron('jazz_and_tv', '0 0 0 * * * *', async () => {
+  // Spawn Jazztronauts objects
   spawnJazzObjects()
     .then(() => {
       showJazzObjects(null, true);
     })
     .catch(() => {}); // Do not do anything if the error is thrown for now.
+  // Show random video from TV
+  tvShowRandomVideo(null, null);
 });

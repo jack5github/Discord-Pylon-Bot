@@ -13,9 +13,10 @@ import { getString } from './global';
  * MEE6 uses !
  * SafetyAtLast uses &
  * Tatsu uses t!
+ * Hydra uses .
  * \ may be used innocently when trying to get mention and emoji IDs
  */
-export const COMMAND_PREFIXES = ['>', '%', '^', ':', ',', '.', 'pylon ', 'py '];
+export const COMMAND_PREFIXES = ['>', '%', '^', ':', ',', 'pylon ', 'py '];
 
 // Embed colour - The colour of embed content that the bot posts.
 export const EMBED_COLOUR = 0xff4d00;
@@ -83,8 +84,8 @@ export const COMMAND_DEFAULT_CATEGORY = 'default';
 export const BOT_CHANNEL = '';
 
 // Jazztronauts command settings.
-export const JAZZ_OBJECTS_MINIMUM = 20; // The minimum number of objects that can spawn at once.
-export const JAZZ_OBJECTS_MAXIMUM = 36; // The maximum number of objects that can spawn at once.
+export const JAZZ_OBJECTS_MINIMUM = 16; // The minimum number of objects that can spawn at once.
+export const JAZZ_OBJECTS_MAXIMUM = 30; // The maximum number of objects that can spawn at once.
 export const JAZZ_OUTSIDE_CHANCE = 0.5; // How often outside objects will appear out of 1.
 export const JAZZ_REWARD_SMALL_MINIMUM = 2; // The base minimum number of points for small objects.
 export const JAZZ_REWARD_SMALL_MAXIMUM = 4; // The base maximum number of points for small objects.
@@ -95,6 +96,9 @@ export const JAZZ_REWARD_BONUS_MULTIPLIER = 2; // How much to multiply the point
 
 // Steam Game default steamid64 - What steamid64 to use when none is provided. Get one from https://steamid.io
 export const STEAMGAME_DEFAULT_STEAMID64 = '';
+
+// TV channel - The channel where the bot should post a random video from the TV command each day.
+export const TV_CHANNEL = '';
 
 // Developer mode - Changes the bot behaviour depending on the specified channel.
 export const DEV_CHANNEL = '';

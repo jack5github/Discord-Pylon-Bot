@@ -11,8 +11,9 @@ import {
   createEmbed,
   createErrorEmbed,
   doesUserHavePermission,
-  getString
+  getString,
 } from '../global';
+import { TV_CHANNEL } from '../config';
 import { YOUTUBE_API_KEY } from '../secrets';
 
 createCommand({
@@ -20,8 +21,7 @@ createCommand({
   category: 'fun',
   aliases: ['neave', 'neavetv', 'randomvideo', 'youtubetv', 'yttv'],
   description: getString('cmd_tv'),
-  longDescription:
-    getString('cmd_tv_long'),
+  longDescription: getString('cmd_tv_long'),
   args: [
     { name: 'count', description: getString('cmd_tv_arg_count') },
     { name: 'list [page]', description: getString('cmd_tv_arg_list') },
@@ -36,10 +36,7 @@ createCommand({
     },
   ],
   restrictChannel: true,
-  run: function (
-    message: discord.GuildMemberMessage,
-    input: string[] | null
-  ) {
+  run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     tvCommand(message, input);
   },
 });
@@ -74,17 +71,14 @@ async function tvCommand(
             tvRemoveVideo(message, args);
           }
         } else {
-          createErrorEmbed(
-            message,
-            getString('tv_incorrect_arg')
-          );
+          createErrorEmbed(message, getString('tv_incorrect_arg'));
         }
       }
     });
   });
 }
 
-async function tvShowRandomVideo(
+export async function tvShowRandomVideo(
   message: discord.GuildMemberMessage,
   index: number | null
 ) {
@@ -93,26 +87,33 @@ async function tvShowRandomVideo(
     if (videos != null) {
       if (index == null) {
         // Get a random video from the list.
-        message.reply(
-          'https://youtube.com/watch?v=' +
-            videos[Math.floor(Math.random() * videos.length)]
-        );
+        if (message != null) {
+          // Respond to the command activated by a user.
+          message.reply(
+            'https://youtube.com/watch?v=' +
+              videos[Math.floor(Math.random() * videos.length)]
+          );
+        } else {
+          // This command has been scheduled, announce to everybody.
+          discord.getTextChannel(TV_CHANNEL).then((channel) => {
+            if (channel != null) {
+              channel.sendMessage(
+                'https://youtube.com/watch?v=' +
+                  videos[Math.floor(Math.random() * videos.length)]
+              );
+            }
+          });
+        }
       } else if (index >= 1 && index <= videos.length) {
         // Get the video from the index the user specified.
         message.reply('https://youtube.com/watch?v=' + videos[index - 1]);
       } else {
         // The user specified an unusable index, show an error.
-        createErrorEmbed(
-          message,
-          getString('tv_incorrect_id')
-        );
+        createErrorEmbed(message, getString('tv_incorrect_id'));
       }
     } else {
       // Rare edge case: There are no videos in the list.
-      createErrorEmbed(
-        message,
-        getString('tv_no_videos')
-      );
+      createErrorEmbed(message, getString('tv_no_videos'));
     }
   });
 }
@@ -131,10 +132,7 @@ async function tvShowVideoCount(message: discord.GuildMemberMessage) {
       embed.setTitle(msg);
       message.reply(embed);
     } else {
-      createErrorEmbed(
-        message,
-        getString('tv_no_videos')
-      );
+      createErrorEmbed(message, getString('tv_no_videos'));
     }
   });
 }
@@ -242,37 +240,34 @@ async function tvAddVideo(
     let database = new pylon.KVNamespace('tv');
     database.get<string[]>('videoIds').then((videos) => {
       if (videos != null) {
-      if (input != null) {
-        let added: string[] = [];
-        input.forEach((link) => {
-          let match = link.match(/((?<=watch\?v=)|(?<=.be\/))[^&>',]{11}/);
-          if (match != null) {
-            added.push(match[0].toString());
-          }
-        });
-        if (added.length > 0) {
-          added.forEach((add) => {
-            videos.push(add);
-          })
-          database.put('videoIds', videos);
-          let embed = createEmbed();
-          let msg = getString('tv_add').replaceAll('%1', added.length);
-          if (added.length == 1) {
-            msg = msg.replaceAll('%2', 'video');
+        if (input != null) {
+          let added: string[] = [];
+          input.forEach((link) => {
+            let match = link.match(/((?<=watch\?v=)|(?<=.be\/))[^&>',]{11}/);
+            if (match != null) {
+              added.push(match[0].toString());
+            }
+          });
+          if (added.length > 0) {
+            added.forEach((add) => {
+              videos.push(add);
+            });
+            database.put('videoIds', videos);
+            let embed = createEmbed();
+            let msg = getString('tv_add').replaceAll('%1', added.length);
+            if (added.length == 1) {
+              msg = msg.replaceAll('%2', 'video');
+            } else {
+              msg = msg.replaceAll('%2', 'videos');
+            }
+            embed.setTitle(msg);
+            message.reply(embed);
           } else {
-            msg = msg.replaceAll('%2', 'videos');
+            createErrorEmbed(message, getString('tv_incorrect_url'));
           }
-          embed.setTitle(msg);
-          message.reply(embed);
         } else {
-          createErrorEmbed(
-            message,
-            getString('tv_incorrect_url')
-          );
+          createErrorEmbed(message, getString('tv_empty'));
         }
-      } else {
-        createErrorEmbed(message, getString('tv_empty'));
-      }
       } else {
         createErrorEmbed(message, getString('tv_db_error'));
       }
@@ -332,19 +327,13 @@ async function tvRemoveVideo(
           embed.setTitle(msg);
           message.reply(embed);
         } else {
-          createErrorEmbed(
-            message,
-            getString('tv_incorrect_url')
-          );
+          createErrorEmbed(message, getString('tv_incorrect_url'));
         }
       } else {
         createErrorEmbed(message, getString('tv_empty'));
       }
     });
   } else {
-    createErrorEmbed(
-      message,
-      getString('no_permission')
-    );
+    createErrorEmbed(message, getString('no_permission'));
   }
 }
