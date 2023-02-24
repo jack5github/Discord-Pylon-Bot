@@ -272,6 +272,8 @@ async function tvAddVideo(
         createErrorEmbed(message, getString('tv_db_error'));
       }
     });
+  } else {
+    createErrorEmbed(message, getString('no_permission'));
   }
 }
 
