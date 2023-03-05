@@ -23,6 +23,7 @@ import './commands/rps';
 import './commands/steamgame';
 import './commands/support';
 import './commands/tv';
+import './commands/userinfo';
 
 import './scheduled';
 import './logging';

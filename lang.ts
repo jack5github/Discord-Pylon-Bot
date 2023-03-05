@@ -50,7 +50,7 @@ export const dictionary: any = {
   category_links_desc_long:
     'In a rush and not wanting to use Google? Not to worry, just type one of these commands and the relevant link will be posted!',
   category_system_title: 'System Commands',
-  category_system_desc: 'Inspect the inner workings of the bot.',
+  category_system_desc: 'Inspect the inner workings of the bot and its users.',
   category_system_desc_long:
     'Developing this bot takes time and effort, and this is all done for free. Please consider supporting the developers.',
   category_tf2_title: 'Team Fortress 2',
@@ -153,6 +153,11 @@ export const dictionary: any = {
   cmd_tv_arg_id: 'Add a video index from the list to get it embedded.',
   cmd_tv_arg_list: 'See the list of videos.',
   cmd_tv_arg_remove: 'Remove a video from the list. (Managers only)',
+  cmd_userinfo: 'Reveals hidden information about the given Discord user.',
+  cmd_userinfo_long:
+    'Reveals much of the hidden information about any given Discord user, including their server join date in your local time zone.',
+  cmd_userinfo_arg_user:
+    'See the info of another user. Copy their ID by enabling Developer Mode in your advanced Discord settings.',
   /*
    * Command-specific strings.
    */
@@ -342,4 +347,11 @@ export const dictionary: any = {
   tv_empty: 'Video URLs must be supplied in order to perform any action.',
   tv_db_error:
     'There was an error updating the list of videos. Please try again later.',
+  userinfo_user_name: 'Username',
+  userinfo_user_id: 'User ID',
+  userinfo_user_joindate: 'Join Date',
+  userinfo_user_rolecount: '# Roles',
+  userinfo_user_booster: 'Server Booster?',
+  userinfo_user_bot: 'Bot?',
+  userinfo_absent: '*This user is not in the current Discord server.*',
 };
