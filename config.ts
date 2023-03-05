@@ -83,7 +83,12 @@ export const COMMAND_DEFAULT_CATEGORY = 'default';
  */
 export const BOT_CHANNEL = '';
 
+// Hangman command settings.
+export const HANGMAN_CHANCES = 7; // How many chances users get to guess a word.
+export const HANGMAN_TIMEOUT = 60 * 60 * 1000; // How long until a user's game is deleted automatically in milliseconds.
+
 // Jazztronauts command settings.
+export const JAZZ_PILLAGE_COOLDOWN = 5 * 60 * 1000; // How long users must wait between pillaging objects in milliseconds.
 export const JAZZ_OBJECTS_MINIMUM = 16; // The minimum number of objects that can spawn at once.
 export const JAZZ_OBJECTS_MAXIMUM = 30; // The maximum number of objects that can spawn at once.
 export const JAZZ_OUTSIDE_CHANCE = 0.5; // How often outside objects will appear out of 1.

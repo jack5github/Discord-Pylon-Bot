@@ -6,10 +6,12 @@ import './lang';
 
 import './commands/8ball';
 import './commands/avatar';
+import './commands/blackjack';
 import './commands/cat';
 import './commands/dadjoke';
 import './commands/emojispeak';
 import './commands/flip';
+import './commands/hangman';
 import './commands/help';
 import './commands/hug';
 import './commands/jazz';

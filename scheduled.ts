@@ -3,8 +3,14 @@
  * Functions need to be exported to be run from here.
  */
 
+import { deleteExpiredHangmans } from './commands/hangman';
 import { spawnJazzObjects, showJazzObjects } from './commands/jazz';
 import { tvShowRandomVideo } from './commands/tv';
+
+// Run every hour
+pylon.tasks.cron('delete_expired_hangmans', '0 0 * * * *', async () => {
+  deleteExpiredHangmans();
+});
 
 // Run every day at 00:00 UTC (10:00 AEST)
 pylon.tasks.cron('jazz_and_tv', '0 0 0 * * * *', async () => {

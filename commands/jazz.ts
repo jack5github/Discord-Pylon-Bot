@@ -12,6 +12,7 @@ import {
 } from '../global';
 import {
   BOT_CHANNEL,
+  JAZZ_PILLAGE_COOLDOWN,
   JAZZ_OBJECTS_MINIMUM,
   JAZZ_OBJECTS_MAXIMUM,
   JAZZ_OUTSIDE_CHANCE,
@@ -239,8 +240,6 @@ objects.forEach((obj) => {
     maxChance = obj.chance;
   }
 });
-
-let JAZZ_PILLAGE_COOLDOWN = 5 * 60000; // 5 minutes.
 
 async function jazzCommand(
   message: discord.GuildMemberMessage,

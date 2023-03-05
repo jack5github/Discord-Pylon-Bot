@@ -95,6 +95,10 @@ export const dictionary: any = {
   cmd_flip: 'Flip a coin to see how lucky you are.',
   cmd_flip_long:
     "Can't make a decision or just want to see how lucky you are? This simple command will flip a coin for you.",
+  cmd_hangman: 'Play a quick game of Hangman using a random word.',
+  cmd_hangman_long:
+    'Play the popular word game Hangman. You only have a few chances to guess the full word.',
+  cmd_hangman_arg_letter: 'The letter you want to guess.',
   cmd_help: 'View all of the commands and access info about them.',
   cmd_help_long:
     "With this command you can preview every other command and access info about them. But you already knew that, didn't you?",
@@ -197,6 +201,38 @@ export const dictionary: any = {
     'The message you want to convert is too long. Up to %1 characters are allowed.',
   flip_heads: "<:TRexExcited:942401501316395019> ...it's Heads!",
   flip_tails: "<:cheesewings:549758544447275022> ...it's Tails!",
+  hangman_running: 'Starting Hangman game...',
+  hangman_start: 'Let the Hangman game begin! Your word is %1 letters long.',
+  hangman_playing:
+    'You have an ongoing Hangman game. Guess by typing a single letter after the command.',
+  hangman_status_chances: 'Incorrect guesses: **%1** | Chances left: **%2**',
+  hangman_status_guesses: 'Guessed letters: *%1*',
+  hangman_win_title: 'Congratulations!',
+  hangman_win_desc: 'You won this game of Hangman! Your word was *%1*!',
+  hangman_lose_title: 'Too bad...',
+  hangman_lose_desc: 'You lost this game of Hangman. Your word was *%1*.',
+  hangman_input_right: [
+    'Yes, the letter *%1* is in the word!',
+    'Well done, the letter *%1* is in the word!',
+    "That's it, the letter *%1* is in the word!",
+    'Good job, the letter *%1* is in the word!',
+    'Keep it up, the letter *%1* is in the word!',
+  ],
+  hangman_input_wrong: [
+    'Sorry, the letter *%1* is not in the word.',
+    'Oops, the letter *%1* is not in the word.',
+    'What a shame, the letter *%1* is not in the word.',
+    'This sucks, the letter *%1* is not in the word.',
+    'Aw shucks, the letter *%1* is not in the word.',
+  ],
+  hangman_input_exists:
+    'You have already guessed the letter *%1*, try a different one.',
+  hangman_input_error:
+    'You can only guess a single letter at a time during a game of Hangman.',
+  hangman_db_error:
+    'There was an error checking the state of your game. Please try again later.',
+  hangman_api_error:
+    'There was an error fetching a word from the API, please try again later or contact a manager.',
   hug_no_or_self_reply:
     "You need to reply to someone else's message to hug them.",
   hug_other_user: [
