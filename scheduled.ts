@@ -5,11 +5,13 @@
 
 import { deleteExpiredHangmans } from './commands/hangman';
 import { spawnJazzObjects, showJazzObjects } from './commands/jazz';
+import { deleteExpiredStandoffs } from './commands/standoff';
 import { tvShowRandomVideo } from './commands/tv';
 
 // Run every hour
-pylon.tasks.cron('delete_expired_hangmans', '0 0 * * * *', async () => {
+pylon.tasks.cron('delete_expired_games', '0 0 * * * *', async () => {
   deleteExpiredHangmans();
+  deleteExpiredStandoffs();
 });
 
 // Run every day at 00:00 UTC (10:00 AEST)

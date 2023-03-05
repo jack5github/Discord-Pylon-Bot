@@ -25,9 +25,9 @@ export const EMBED_COLOUR_ERROR = 0xff0000;
 // Command cooldown - How long users should wait between commands in milliseconds.
 export const COMMAND_COOLDOWN = 3000;
 
-// Error timeout - How long users should be given to read error messages in milliseconds.
-export const ERROR_TIMEOUT_MINIMUM = 5000;
-export const ERROR_TIMEOUT_PER_CHAR = 50;
+// Error message settings.
+export const ERROR_TIMEOUT_MINIMUM = 5000; // How long users should be given to read error messages by default in milliseconds.
+export const ERROR_TIMEOUT_PER_CHAR = 50; // How many milliseconds to add onto the time necessary to read error messages per character.
 
 /* Command categories - Human-readable explanations of the different types of commands.
  * This is used by the help command to return info relevant to the user's query.
@@ -98,6 +98,11 @@ export const JAZZ_REWARD_LARGE_MINIMUM = 16; // The base minimum number of point
 export const JAZZ_REWARD_LARGE_MAXIMUM = 20; // The base maximum number of points for large objects.
 export const JAZZ_REWARD_WORLD_MULTIPLIER = 0.5; // How much to multiply the points of an object if it is not a prop.
 export const JAZZ_REWARD_BONUS_MULTIPLIER = 2; // How much to multiply the points of an object if it is a bonus.
+
+// Standoff command settings.
+export const STANDOFF_WAIT_MINIMUM = 4000; // The minimum amount of time before users can fire at each-other in milliseconds, should be more than command cooldown.
+export const STANDOFF_WAIT_MAXIMUM = 10000; // The maximum amount of time before users can fire at each-other in milliseconds.
+export const STANDOFF_TIMEOUT = 60 * 1000; // How long until a challenge is deleted automatically in milliseconds.
 
 // Steam Game default steamid64 - What steamid64 to use when none is provided. Get one from https://steamid.io
 export const STEAMGAME_DEFAULT_STEAMID64 = '';

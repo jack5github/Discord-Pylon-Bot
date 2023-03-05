@@ -20,6 +20,7 @@ import './commands/medic';
 import './commands/poll';
 import './commands/roll';
 import './commands/rps';
+import './commands/standoff';
 import './commands/steamgame';
 import './commands/support';
 import './commands/tv';

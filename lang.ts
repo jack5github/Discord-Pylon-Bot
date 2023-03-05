@@ -137,6 +137,11 @@ export const dictionary: any = {
   cmd_rps_long:
     'Do you dare challenge the bot to a game of Rock, Paper, Scissors? Try this command and see how lucky you are.',
   cmd_rps_arg_hand: 'Either rock, paper or scissors.',
+  cmd_standoff: "Prove you're the quickest draw in the west.",
+  cmd_standoff_long:
+    "This high-speed western standoff between two Discord users is sure to get one's blood pumping, and the other's blood pouring.",
+  cmd_standoff_arg_user: 'The user to challenge or accept a challenge from.',
+  cmd_standoff_arg_fire: 'Shoot when it is possible to do so.',
   cmd_steamgame: 'Picks a random Steam game for you to check out.',
   cmd_steamgame_long:
     "Can't decide on what to play? Use this command to be recommended a random game from someone's library.",
@@ -276,7 +281,7 @@ export const dictionary: any = {
   jazz_no_objects:
     'There are no more objects left to pillage for today. Come back tomorrow!',
   jazz_pillage_error:
-    'There was an error pillaging that object and retreiving your reward. Please try again later.',
+    'There was an error pillaging that object and retrieving your reward. Please try again later.',
   jazz_lb_no_users: 'No-one has pillaged an object yet.',
   jazz_lb_error:
     'There was an error fetching the Jazztronauts leaderboard. Please try again later.',
@@ -311,6 +316,33 @@ export const dictionary: any = {
   rps_shoot: 'How could you? How... could you?',
   rps_incorrect_hand:
     'Only `rock`, `paper` and `scissors` are accepted as valid hands.',
+  standoff_info_title: 'Western Standoff 🔫',
+  standoff_info_desc:
+    "Think you're tougher than the rest? Around here you've got to prove it.\nChoose another user of your choice and mention them using this command to propose a challenge.",
+  standoff_propose_title: 'Standoff proposed!',
+  standoff_propose_desc: '**%1**: Accept to duel with `>standoff %2`',
+  standoff_ready_title: '🛑 Ready... 🛑',
+  standoff_ready_desc: 'Be ready to type `>fire` at any moment...',
+  standoff_fire_title: '💥 FIRE!!!! 💥',
+  standoff_fire_desc: '**Type `>fire` NOW!**',
+  standoff_winner: [
+    'We have a winner: %1! 🏆',
+    'Presenting the victor: %1! 🏆',
+    "Here's the fast one: %1! 🏆",
+    'Our own trigger finger: %1! 🏆',
+    'Now the wildest of all: %1! 🏆',
+  ],
+  standoff_loser: [
+    "%1's grip wasn't strong enough due to the gunshot wound they've likely sustained.",
+    "%1 failed to fire because they'd likely already been shot.",
+    "%1 isn't looking so good after a missed opportunity to win a standoff.",
+  ],
+  standoff_self:
+    'You cannot challenge yourself, please challenge another user.',
+  standoff_duplicate:
+    'There is already an pending challenge between you and %1, please challenge another user.',
+  standoff_db_error:
+    'There was an error participating in the standoff. Please try again later or contact a manager.',
   steamgame_incorrect_id:
     'You must provide the steamID64 of the Steam user to pick a random game from. To find it, go to https://steamid.io.',
   steamgame_running: 'Querying Steam library...',

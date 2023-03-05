@@ -229,13 +229,15 @@ export async function doesUserHavePermission(
 // User timeout functions - Sets limits on how fast a user can use commands.
 async function isUserTimedOut(message: discord.GuildMemberMessage) {
   return new Promise<boolean>((resolve) => {
+    // Get all users from the timed out list.
     let database = new pylon.KVNamespace('timeout');
     database
       .get<any[]>('timedOut')
       .then((users) => {
         let time = new Date().getTime();
         if (users != null) {
-          let userSearch = (element: any) => (element.id = message.author.id);
+          // The timed out list has users in it, check if any of them are the current one.
+          let userSearch = (element: any) => element.id == message.author.id;
           let user = users.find(userSearch);
           if (user != null) {
             let cooldownTime = user.date + CFG.COMMAND_COOLDOWN;
