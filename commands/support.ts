@@ -12,6 +12,7 @@ createCommand({
     'developer',
     'dev',
     'jack5',
+    'rate',
     'report',
     'rep',
     'suggestion',

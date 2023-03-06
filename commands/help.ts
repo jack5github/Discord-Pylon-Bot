@@ -127,7 +127,7 @@ async function helpCommand(
               }
               let title = '`' + command.name + '`';
               if (command.featured) {
-                title = title + ' ⭐';
+                title = title + ' ' + getString('help_featured_icon');
               }
               fields.push({
                 name: title,
@@ -154,7 +154,12 @@ async function helpCommand(
           // A matching command was found, display all information about it.
           let title = '`' + command.name + '`';
           if (command.featured) {
-            title = title + ' ⭐ *Featured!*';
+            title =
+              title +
+              ' ' +
+              getString('help_featured_icon') +
+              ' ' +
+              getString('help_featured');
           }
           embed.setTitle(title);
           let description = '';

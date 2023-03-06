@@ -8,7 +8,7 @@ import { createCommand, createErrorEmbed, getString } from '../global';
 createCommand({
   name: 'emojispeak',
   category: 'chat',
-  aliases: ['emoji', 'say', 'speak', 'super', 'superhot'],
+  aliases: ['say', 'speak', 'super', 'superhot'],
   description: getString('cmd_emojispeak'),
   longDescription: getString('cmd_emojispeak_long'),
   args: [

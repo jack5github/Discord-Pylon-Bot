@@ -15,6 +15,7 @@ import './commands/emojispeak';
 import './commands/flip';
 import './commands/hangman';
 import './commands/help';
+import './commands/hotornot';
 import './commands/hug';
 import './commands/jazz';
 import './commands/links';

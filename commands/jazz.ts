@@ -372,7 +372,6 @@ async function showJazzLeaderboard(
       if (users != null && users.length >= 1) {
         // Determine the number of pages and what page to display
         let currentPage = 1;
-        console.log(input);
         if (input.length >= 2) {
           currentPage = parseInt(input[1]);
         }
@@ -581,7 +580,7 @@ async function jazzIsUserTimedOut(message: discord.GuildMemberMessage) {
           resolve(0);
         }
       })
-      .catch((err) => {
+      .catch(() => {
         // There was an error with the database, do not allow the user to continue.
         resolve(-1);
       });

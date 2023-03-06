@@ -101,10 +101,13 @@ export const ECONOMY_DAILY_MAXIMUM = 99;
 
 // Hangman command settings.
 export const HANGMAN_CHANCES = 7; // How many chances users get to guess a word.
-export const HANGMAN_TIMEOUT = 60 * 60 * 1000; // How long until a user's game is deleted automatically in milliseconds.
+export const HANGMAN_TIMEOUT = 60 * 60000; // How long until a user's game is cancelled automatically in milliseconds.
+
+// Hot or Not command settings.
+export const HOTORNOT_TIMEOUT = 60000; // How long until a voting window is cancelled automatically in milliseconds.
 
 // Jazztronauts command settings.
-export const JAZZ_PILLAGE_COOLDOWN = 5 * 60 * 1000; // How long users must wait between pillaging objects in milliseconds.
+export const JAZZ_PILLAGE_COOLDOWN = 5 * 60000; // How long users must wait between pillaging objects in milliseconds.
 export const JAZZ_OBJECTS_MINIMUM = 16; // The minimum number of objects that can spawn at once.
 export const JAZZ_OBJECTS_MAXIMUM = 30; // The maximum number of objects that can spawn at once.
 export const JAZZ_OUTSIDE_CHANCE = 0.5; // How often outside objects will appear out of 1.
@@ -118,7 +121,7 @@ export const JAZZ_REWARD_BONUS_MULTIPLIER = 2; // How much to multiply the point
 // Standoff command settings.
 export const STANDOFF_WAIT_MINIMUM = 4000; // The minimum amount of time before users can fire at each-other in milliseconds, should be more than command cooldown.
 export const STANDOFF_WAIT_MAXIMUM = 10000; // The maximum amount of time before users can fire at each-other in milliseconds.
-export const STANDOFF_TIMEOUT = 60 * 1000; // How long until a challenge is deleted automatically in milliseconds.
+export const STANDOFF_TIMEOUT = 60000; // How long until a challenge is cancelled automatically in milliseconds.
 
 // Steam Game default steamid64 - What steamid64 to use when none is provided. Get one from https://steamid.io
 export const STEAMGAME_DEFAULT_STEAMID64 = '';

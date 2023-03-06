@@ -70,6 +70,8 @@ export const dictionary: any = {
     "⚠️ *This command can only be run in the bot's dedicated channels.*",
   help_no_cmds_in_category:
     'No commands could be found in that category. Please contact a server manager.',
+  help_featured_icon: '⭐',
+  help_featured: '*Featured!*',
   cmd_eightball: 'Get your fortune told from The Magic 8-Ball.',
   cmd_eightball_long:
     "Got a question that you want a second opinion on? Get your or someone else's fortune told from The Magic 8-Ball.",
@@ -120,6 +122,11 @@ export const dictionary: any = {
   cmd_help_long:
     "With this command you can preview every other command and access info about them. But you already knew that, didn't you?",
   cmd_help_arg_topic: 'The command or category to learn more about.',
+  cmd_hotornot: 'Settle once and for all the best emojis around!',
+  cmd_hotornot_long:
+    "Take part in a survey where you're shown a pair of emoji and asked which is better. Vote more for a bigger impact!",
+  cmd_hotornot_arg_lb:
+    'Opens the leaderboard of the best emojis as cumulatively voted by everyone.',
   cmd_hug: 'Reply to a message to give that user a hug!',
   cmd_hug_long:
     'Sometimes you need to show your appreciation to another user. With this command you can give them a hug by replying to them!',
@@ -286,6 +293,17 @@ export const dictionary: any = {
     'There was an error checking the state of your game. Please try again later.',
   hangman_api_error:
     'There was an error fetching a word from the API, please try again later or contact a manager.',
+  hotornot_start_emojis: '%1 🆚 %2',
+  hotornot_start: 'Hot or Not! Which of these emoji is the best?',
+  hotornot_voted: '%1 Your vote has been submitted!',
+  hotornot_voted_incompatible: 'Your vote has been submitted!',
+  hotornot_lb_title: 'Hot or Not Leaderboard',
+  hotornot_lb_row: '**%1%2:** %3 `%4` - (%5)',
+  hotornot_lacking_emojis:
+    'There are not enough emoji on this Discord server for this command to run, please contact a manager.',
+  hotornot_lb_no_users: 'No-one has voted for any emoji yet.',
+  hotornot_db_error:
+    'There was an error accessing the emoji scores. Please try again later.',
   hug_no_or_self_reply:
     "You need to reply to someone else's message to hug them.",
   hug_other_user: [

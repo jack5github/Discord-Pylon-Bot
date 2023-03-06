@@ -7,7 +7,7 @@ import { createCommand, createErrorEmbed, getString } from '../global';
 createCommand({
   name: 'avatar',
   category: 'system',
-  aliases: ['image', 'pfp', 'pic', 'picture', 'profile'],
+  aliases: ['icon', 'image', 'pfp', 'pic', 'picture', 'profile'],
   description: getString('cmd_avatar'),
   longDescription: getString('cmd_avatar_long'),
   args: [

@@ -4,13 +4,15 @@
  */
 
 import { deleteExpiredHangmans } from './commands/hangman';
+import { deleteExpiredHotOrNots } from './commands/hotornot';
 import { spawnJazzObjects, showJazzObjects } from './commands/jazz';
 import { deleteExpiredStandoffs } from './commands/standoff';
 import { tvShowRandomVideo } from './commands/tv';
 
 // Run every hour
-pylon.tasks.cron('delete_expired_games', '0 0 * * * *', async () => {
+pylon.tasks.cron('delete_expired_embeds', '0 0 * * * *', async () => {
   deleteExpiredHangmans();
+  deleteExpiredHotOrNots();
   deleteExpiredStandoffs();
 });
 

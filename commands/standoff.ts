@@ -111,8 +111,7 @@ async function standoffCommand(
                                     embed.setDescription(
                                       getString('standoff_fire_desc')
                                     );
-                                    oldMessage.delete();
-                                    message.reply(embed);
+                                    oldMessage.edit(embed);
                                   })
                                   .catch(() => {
                                     createErrorEmbed(
