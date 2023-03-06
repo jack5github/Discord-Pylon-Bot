@@ -43,8 +43,7 @@ async function hangmanCommand(
     .then(async (games) => {
       let game: any = null;
       if (games != null) {
-        let gameSearch = (element: any) => element.id == user;
-        game = games.find(gameSearch);
+        game = games.find((element: any) => element.id == user);
       }
       if (game == null) {
         // There is no active hangman game, start one by getting a random word.
@@ -143,7 +142,8 @@ async function hangmanCommand(
                       embed.setDescription(
                         getString('hangman_win_desc').replaceAll(
                           '%1',
-                          game.word.toUpperCase() +
+                          game.word.toUpperCase()
+                        ) +
                           '\n' +
                           getString('hangman_status_chances')
                             .replaceAll('%1', HANGMAN_CHANCES - chances)
@@ -292,7 +292,7 @@ async function updateUserHangman(userId: string, guesses: string | null) {
       if (games != null) {
         let gameSearch = (element: any) => element.id == userId;
         let index = games.findIndex(gameSearch);
-        if (index != 1) {
+        if (index != -1) {
           if (guesses != null) {
             // The user's listing was found, update the guesses and time played.
             games[index].guess = guesses;
