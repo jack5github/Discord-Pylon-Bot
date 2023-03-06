@@ -22,6 +22,7 @@ createCommand({
     },
   ],
   restrictChannel: true,
+  featured: true,
   run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     userInfoCommand(message, input);
   },

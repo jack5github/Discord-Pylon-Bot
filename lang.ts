@@ -14,6 +14,9 @@ export const dictionary: any = {
   incorrect_channel: 'That command cannot be used in this channel.',
   unknown_user:
     'No user could be found with that info. Try copying an ID, or simply leaving the ID blank to point to yourself.',
+  currency_name: 'Coins',
+  currency_name_single: 'Coin',
+  currency_icon: '🪙',
   minutes_name: 'minutes',
   minutes_name_single: 'minute',
   page_numbers: 'Page %1 of %2',
@@ -75,6 +78,17 @@ export const dictionary: any = {
     "No need to search how to grab a Discord user's avatar, this command will do it for you.",
   cmd_avatar_arg_user:
     'See the avatar of another user. Copy their ID by enabling Developer Mode in your advanced Discord settings.',
+  cmd_balance: 'Shows you how much %1 you and others have earned.',
+  cmd_balance_long:
+    'As you use other economy commands you will earn a lot of %1. This command shows you how much you and others have.',
+  cmd_balance_arg_lb:
+    'Opens the leaderboard of how many %1 each user has earnt in total.',
+  cmd_balance_arg_add: 'Add %1 to yourself or another user. (Managers only)',
+  cmd_balance_arg_subtract:
+    'Subtract %1 from yourself or another user. (Managers only)',
+  cmd_balance_arg_set: "Set your or another user's %1 balance. (Managers only)",
+  cmd_balance_arg_clear:
+    'Remove all %1 from yourself or another user. (Managers only)',
   cmd_blackjack: 'Draw 2 to 4 cards and try to get a total of 21 or less.',
   cmd_blackjack_long:
     'Test your luck with this simple Blackjack game. Draw 2 to 4 cards and try to get a total of 21 or less.',
@@ -87,6 +101,9 @@ export const dictionary: any = {
   cmd_dadjoke: "There's nothing quite like a good dad joke!",
   cmd_dadjoke_long:
     "If you need a chuckle, use this command! It will fetch you a random dad joke that's sure to put you in stitches!",
+  cmd_daily: 'Use this command to claim your daily gift of %1.',
+  cmd_daily_long:
+    'After 12 am AEST every day, you can use this command to claim free %1. This can only be done once per day.',
   cmd_emojispeak: 'Transforms your text into regional indicators.',
   cmd_emojispeak_long:
     'Enter a message into this command and it will be converted into large letters and numbers (regional indicators)!',
@@ -110,7 +127,8 @@ export const dictionary: any = {
   cmd_jazz_long:
     'In Jazztronauts!!, you pillage objects to earn %1, but watch out, everyone else wants to as well! Objects are respawned at 10 am AEST.',
   cmd_jazz_arg_object: 'The object you wish to pillage.',
-  cmd_jazz_arg_lb: 'Opens the leaderboard of how many %1 each user has earnt.',
+  cmd_jazz_arg_lb:
+    'Opens the leaderboard of how many %1 each user has earnt playing this minigame.',
   cmd_jazz_arg_respawn: 'Respawns objects ahead of time. (Managers only)',
   cmd_links_build: 'Build a Sentry, right in the chat!',
   cmd_links_build_long:
@@ -189,6 +207,23 @@ export const dictionary: any = {
     'Outlook not so good.',
     'Very doubtful.',
   ],
+  balance_message: 'You currently own %1 %2 %3.',
+  balance_update:
+    "%1's balance has been successfully updated. It is now %2 %3 %4.",
+  balance_lb_title: '%1 %2 Leaderboard',
+  balance_lb_row: '**%1%2:** %3 - %4 %5',
+  balance_update_error:
+    "There was an error updating %1's balance. Please try again later.",
+  balance_subtract_poor:
+    '%1 does not have enough funds for that operation to pass.',
+  balance_incorrect_amount:
+    'A postive whole number currency amount must be supplied to perform this operation.',
+  balance_incorrect_arg: 'Invalid argument. Leave blank to get your balance.',
+  balance_lb_no_users: 'No-one has earned any currency yet.',
+  balance_lb_error:
+    'There was an error fetching the balances leaderboard. Please try again later.',
+  balance_db_error:
+    'There was an error retrieving your balance. Please try again later.',
   blackjack_no_cards:
     'Specify the number of cards you want to draw between 2 and 4.',
   blackjack_incorrect_cards: 'You can only draw between 2 and 4 cards.',
@@ -203,6 +238,14 @@ export const dictionary: any = {
   blackjack_total: 'Total reached: %1',
   dadjoke_api_error:
     'A dad joke could not be retrieved, the joke server may be down. Please try again later.',
+  daily_claim: 'You earned %1 %2 %3 today!',
+  daily_claim_desc: 'Come back tomorrow for another reward!',
+  daily_already_claimed:
+    'You have already claimed your daily gift for today. Come back tomorrow.',
+  daily_db_claim_error:
+    'There was an error providing to you your daily gift. Please try again later.',
+  daily_db_currency_error:
+    'There was an error retrieving the state of the economy. Please try again later.',
   emojispeak_empty:
     'Type a message after the command that you want to convert into regional indicators.',
   emojispeak_cannot_convert:
@@ -268,12 +311,14 @@ export const dictionary: any = {
     'You sent the `%1` into the stratosphere!',
   ],
   jazz_pillage_with_reward: [
-    'You pillaged the `%1` and collected %2 %3!',
-    'You destroyed the `%1` and earned %2 %3!',
-    'You turned the `%1` purpley-pink and received %2 %3!',
-    'You sent the `%1` into the stratosphere and got %2 %3!',
-    'You converted the `%1` into %2 %3!',
+    'You pillaged the `%1` and collected %2 %3 %4!',
+    'You destroyed the `%1` and earned %2 %3 %4!',
+    'You turned the `%1` purpley-pink and received %2 %3 %4!',
+    'You sent the `%1` into the stratosphere and got %2 %3 %4!',
+    'You converted the `%1` into %2 %3 %4!',
   ],
+  jazz_lb_title: 'Jazztronauts!! Leaderboard',
+  jazz_lb_row: '**%1%2:** %3 - %4 %5',
   jazz_unknown_object:
     "There are none of that kind of object to pillage. Leave the command blank to see today's objects.",
   jazz_user_timeout:

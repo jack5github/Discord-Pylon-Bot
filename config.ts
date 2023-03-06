@@ -41,6 +41,18 @@ export const COMMAND_CATEGORIES: any[] = [
     longDescription: getString('category_chat_desc_long'),
   },
   {
+    name: 'economy',
+    title: getString('category_economy_title'),
+    description: getString('category_economy_desc').replaceAll(
+      '%1',
+      getString('currency_name')
+    ),
+    longDescription: getString('category_economy_desc_long').replaceAll(
+      '%1',
+      getString('currency_name')
+    ),
+  },
+  {
     name: 'fun',
     title: getString('category_fun_title'),
     description: getString('category_fun_desc'),
@@ -82,6 +94,10 @@ export const COMMAND_DEFAULT_CATEGORY = 'default';
  * Attempting to use a restricted command outside this or the developer channel will warn the user.
  */
 export const BOT_CHANNEL = '';
+
+// Economy daily amount - How much currency to give users per day if they claim it, randomised within this range.
+export const ECONOMY_DAILY_MINIMUM = 70;
+export const ECONOMY_DAILY_MAXIMUM = 99;
 
 // Hangman command settings.
 export const HANGMAN_CHANCES = 7; // How many chances users get to guess a word.

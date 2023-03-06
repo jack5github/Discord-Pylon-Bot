@@ -6,9 +6,11 @@ import './lang';
 
 import './commands/8ball';
 import './commands/avatar';
+import './commands/balance';
 import './commands/blackjack';
 import './commands/cat';
 import './commands/dadjoke';
+import './commands/daily';
 import './commands/emojispeak';
 import './commands/flip';
 import './commands/hangman';

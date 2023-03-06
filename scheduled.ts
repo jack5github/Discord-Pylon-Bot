@@ -14,6 +14,12 @@ pylon.tasks.cron('delete_expired_games', '0 0 * * * *', async () => {
   deleteExpiredStandoffs();
 });
 
+// Run every day at 14:00 UTC (0:00 AEST)
+pylon.tasks.cron('delete_daily_claims', '0 0 14 * * * *', async () => {
+  let database = new pylon.KVNamespace('economy');
+  database.delete('dailyClaims');
+});
+
 // Run every day at 00:00 UTC (10:00 AEST)
 pylon.tasks.cron('jazz_and_tv', '0 0 0 * * * *', async () => {
   // Spawn Jazztronauts objects

@@ -79,7 +79,7 @@ async function tvCommand(
 }
 
 export async function tvShowRandomVideo(
-  message: discord.GuildMemberMessage,
+  message: discord.GuildMemberMessage | null,
   index: number | null
 ) {
   let database = new pylon.KVNamespace('tv');

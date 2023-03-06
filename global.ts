@@ -106,6 +106,9 @@ export async function createCommand(items: any) {
     if (items.devOnly == null) {
       items.devOnly = false;
     }
+    if (items.featured == null) {
+      items.featured = false;
+    }
     if (items.showInHelp) {
       if (items.category == null) {
         items.category = CFG.COMMAND_DEFAULT_CATEGORY;
@@ -119,6 +122,7 @@ export async function createCommand(items: any) {
         args: items.args,
         restrictChannel: items.restrictChannel,
         devOnly: items.devOnly,
+        featured: items.featured,
       });
     }
   }
@@ -228,47 +232,57 @@ export async function doesUserHavePermission(
 
 // User timeout functions - Sets limits on how fast a user can use commands.
 async function isUserTimedOut(message: discord.GuildMemberMessage) {
-  return new Promise<boolean>((resolve) => {
-    // Get all users from the timed out list.
-    let database = new pylon.KVNamespace('timeout');
-    database
-      .get<any[]>('timedOut')
-      .then((users) => {
-        let time = new Date().getTime();
-        if (users != null) {
-          // The timed out list has users in it, check if any of them are the current one.
-          let userSearch = (element: any) => element.id == message.author.id;
-          let user = users.find(userSearch);
-          if (user != null) {
-            let cooldownTime = user.date + CFG.COMMAND_COOLDOWN;
-            if (cooldownTime < time) {
-              // Rare edge case: User is on the list but is not spamming, do not edit the list.
+  return new Promise<boolean>(async (resolve) => {
+    // Check if the user is not a manager.
+    let manager = await doesUserHavePermission(
+      message,
+      discord.Permissions.MANAGE_GUILD
+    );
+    if (!manager) {
+      // Get all users from the timed out list.
+      let database = new pylon.KVNamespace('timeout');
+      database
+        .get<any[]>('timedOut')
+        .then((users) => {
+          let time = new Date().getTime();
+          if (users != null) {
+            // The timed out list has users in it, check if any of them are the current one.
+            let userSearch = (element: any) => element.id == message.author.id;
+            let user = users.find(userSearch);
+            if (user != null) {
+              let cooldownTime = user.date + CFG.COMMAND_COOLDOWN;
+              if (cooldownTime < time) {
+                // Rare edge case: User is on the list but is not spamming, do not edit the list.
+                timeoutUser(users, message.author.id);
+                resolve(false);
+              } else {
+                // User is on the list and is spamming, warn them with an emoji.
+                message.addReaction('⏰');
+                resolve(true);
+              }
+            } else {
+              // User is not on the list, add them to the list.
+              users.push({ id: message.author.id, date: time });
               timeoutUser(users, message.author.id);
               resolve(false);
-            } else {
-              // User is on the list and is spamming, warn them with an emoji.
-              message.addReaction('⏰');
-              resolve(true);
             }
           } else {
-            // User is not on the list, add them to the list.
-            users.push({ id: message.author.id, date: time });
-            timeoutUser(users, message.author.id);
+            // Rare edge case: The list is uninitialised, initialise it with the user.
+            timeoutUser(
+              [{ id: message.author.id, date: time }],
+              message.author.id
+            );
             resolve(false);
           }
-        } else {
-          // Rare edge case: The list is uninitialised, initialise it with the user.
-          timeoutUser(
-            [{ id: message.author.id, date: time }],
-            message.author.id
-          );
+        })
+        .catch((err) => {
+          // There was an error with the database, allow user to use the command without doing anything.
           resolve(false);
-        }
-      })
-      .catch((err) => {
-        // There was an error with the database, allow user to use the command without doing anything.
-        resolve(false);
-      });
+        });
+    } else {
+      // User is a manager, do not apply timeouts.
+      resolve(false);
+    }
   });
 }
 async function timeoutUser(array: any[], id: string) {

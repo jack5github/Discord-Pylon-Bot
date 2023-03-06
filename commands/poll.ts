@@ -8,7 +8,7 @@ import { createCommand, createErrorEmbed, getString } from '../global';
 createCommand({
   name: 'poll',
   category: 'chat',
-  aliases: ['choice', 'choices', 'contest', 'decide', 'p', 'yesno'],
+  aliases: ['choice', 'choices', 'contest', 'decide', 'yesno'],
   description: getString('cmd_poll'),
   args: [
     {

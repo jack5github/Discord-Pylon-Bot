@@ -23,18 +23,19 @@ import {
   JAZZ_REWARD_WORLD_MULTIPLIER,
   JAZZ_REWARD_BONUS_MULTIPLIER,
 } from '../config';
+import { addUserCurrency } from '../economy';
 
 createCommand({
   name: 'jazz',
-  category: 'fun',
-  aliases: ['jazztronauts', 'object', 'objects'],
+  category: 'economy',
+  aliases: ['gmod', 'jazztronauts', 'object', 'objects'],
   description: getString('cmd_jazz').replaceAll(
     '%1',
-    'points'
+    getString('currency_name')
   ),
   longDescription: getString('cmd_jazz_long').replaceAll(
     '%1',
-    'points'
+    getString('currency_name')
   ),
   args: [
     { name: '[object]', description: getString('cmd_jazz_arg_object') },
@@ -42,11 +43,13 @@ createCommand({
       name: 'lb [page]',
       description: getString('cmd_jazz_arg_lb').replaceAll(
         '%1',
-        'points'
+        getString('currency_name')
+      ),
     },
     { name: 'respawn', description: getString('cmd_jazz_arg_respawn') },
   ],
   restrictChannel: true,
+  featured: true,
   run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     jazzCommand(message, input);
   },
@@ -248,7 +251,6 @@ async function jazzCommand(
   if (input == null) {
     showJazzObjects(message, false);
   } else if (input[0] == 'lb' || input[0] == 'leaderboard') {
-    input.splice(0, 1);
     showJazzLeaderboard(message, input);
   } else if (input[0] == 'respawn') {
     let manager = await doesUserHavePermission(
@@ -370,8 +372,9 @@ async function showJazzLeaderboard(
       if (users != null && users.length >= 1) {
         // Determine the number of pages and what page to display
         let currentPage = 1;
-        if (input.length >= 1) {
-          currentPage = parseInt(input[0]);
+        console.log(input);
+        if (input.length >= 2) {
+          currentPage = parseInt(input[1]);
         }
         let usersPerPage = 10;
         let pages = Math.ceil(users.length / usersPerPage);
@@ -388,7 +391,7 @@ async function showJazzLeaderboard(
           users.sort(compare);
           // Create the embed.
           let embed = createEmbed();
-          embed.setTitle('Jazztronauts!! Leaderboard');
+          embed.setTitle(getString('jazz_lb_title'));
           embed.setFooter({
             text: getString('page_numbers')
               .replaceAll('%1', currentPage)
@@ -403,18 +406,17 @@ async function showJazzLeaderboard(
           function ordinal(n: number) {
             let s = ['th', 'st', 'nd', 'rd'];
             let v = n % 100;
-            return n + (s[(v - 20) % 10] || s[v] || s[0]);
+            return s[(v - 20) % 10] || s[v] || s[0];
           }
           for (let i = 0; i < maximum; i++) {
             description =
               description +
-              '**' +
-              ordinal(index + 1 + i) +
-              ':** <@' +
-              users[index + i].id +
-              '> - ' +
-              users[index + i].amount +
-              ' points';
+              getString('jazz_lb_row')
+                .replaceAll('%1', index + 1 + i)
+                .replaceAll('%2', ordinal(index + 1 + i))
+                .replaceAll('%3', '<@' + users[index + i].id + '>')
+                .replaceAll('%4', users[index + i].amount)
+                .replaceAll('%5', getString('currency_name'));
             if (i < usersPerPage - 1) {
               description = description + '\n';
             }
@@ -486,25 +488,34 @@ async function pillageJazzObject(
               reward = 1;
             }
             // Finally, reward the user and pillage the object
-            let rewardStatus = await addJazzPoints(message.author.id, reward);
+            let rewardStatus = await addUserCurrency(message.author.id, reward);
             if (rewardStatus == 1) {
-              objs.splice(index, 1);
-              database.put('spawnedObjects', objs).then(async () => {
-                // Object was pillaged, tell the user.
-                let embed = createEmbed();
-                let msg = getString('jazz_pillage_with_reward')
-                  .replaceAll('%1', pillage)
-                  .replaceAll('%2', reward);
-                if (reward != 1) {
-                  msg = msg.replaceAll('%3', 'points');
-                } else {
-                  msg = msg.replaceAll('%3', 'point');
-                }
-                embed.setTitle(msg);
-                message.reply(embed);
-              });
+              rewardStatus = await addJazzPoints(message.author.id, reward);
+              if (rewardStatus == 1) {
+                objs.splice(index, 1);
+                database.put('spawnedObjects', objs).then(async () => {
+                  // Object was pillaged, tell the user.
+                  let embed = createEmbed();
+                  let msg = getString('jazz_pillage_with_reward')
+                    .replaceAll('%1', pillage)
+                    .replaceAll('%2', reward)
+                    .replaceAll('%3', getString('currency_icon'));
+                  if (reward != 1) {
+                    msg = msg.replaceAll('%4', getString('currency_name'));
+                  } else {
+                    msg = msg.replaceAll(
+                      '%4',
+                      getString('currency_name_single')
+                    );
+                  }
+                  embed.setTitle(msg);
+                  message.reply(embed);
+                });
+              } else {
+                // There was a database error.
+                createErrorEmbed(message, getString('jazz_pillage_error'));
+              }
             } else {
-              // There was a database error.
               createErrorEmbed(message, getString('jazz_pillage_error'));
             }
           }

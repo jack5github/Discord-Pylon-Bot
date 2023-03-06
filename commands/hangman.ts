@@ -25,6 +25,7 @@ createCommand({
     },
   ],
   restrictChannel: true,
+  featured: true,
   run: function (message: discord.GuildMemberMessage, input: string[] | null) {
     hangmanCommand(message, input);
   },

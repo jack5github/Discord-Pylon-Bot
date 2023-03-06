@@ -17,7 +17,7 @@ import { DEV_CHANNEL } from '../config';
 createCommand({
   name: 'help',
   category: 'system',
-  aliases: ['category', 'command', 'h', 'i', 'info', 'topic'],
+  aliases: ['category', 'command', 'info', 'topic'],
   description: getString('cmd_help'),
   longDescription: getString('cmd_help_long'),
   args: [
@@ -125,8 +125,12 @@ async function helpCommand(
               if (command.description != null && command.description != '') {
                 description = command.description;
               }
+              let title = '`' + command.name + '`';
+              if (command.featured) {
+                title = title + ' ⭐';
+              }
               fields.push({
-                name: '`' + command.name + '`',
+                name: title,
                 value: description,
                 inline: true,
               });
@@ -148,7 +152,11 @@ async function helpCommand(
           (!command.devOnly || channel.id == DEV_CHANNEL)
         ) {
           // A matching command was found, display all information about it.
-          embed.setTitle('`' + command.name + '`');
+          let title = '`' + command.name + '`';
+          if (command.featured) {
+            title = title + ' ⭐ *Featured!*';
+          }
+          embed.setTitle(title);
           let description = '';
           if (command.aliases != null && command.aliases.length >= 1) {
             description += getString('help_cmd_aliases') + ' ';
